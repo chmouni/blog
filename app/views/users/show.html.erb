@@ -20,5 +20,10 @@
   <%= @user.dob %>
 </p>
 
+<p>
+  <strong>avotor:</strong>
+  <%= image_tag(@user.avotor , height: '200', width: '200') %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
