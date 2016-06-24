@@ -1,41 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
+<h1 style="color:blue;margin-top:50px;">Listing Posts</h1><br>
+<% @posts.each do |post| %>
+    <div>
+      <div style="color:blue;">Users:<%= post.user.email %></div><br>
+      <div>Title:<%= post.title %></div><br>
+      <div>Description:<%= post.description %></div><br>
+      <div>1mage:<%= post.image %></div><br>
+      <div>Status:
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.user.email %></td>
-        <td><%= post.title %></td>
-        <td><%= post.description %></td>
-        <td><%= post.image %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td>
-          <% if current_user.id==post.user.id%>
+            <% if current_user.id==post.user.id%>
             <%= link_to 'Edit', edit_post_path(post) %>
-          <%end%>
-        </td>
-        <td>
-          <% if current_user.id==post.user.id%>
+            <%end%>
+
+            <% if current_user.id==post.user.id%>
             <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%end%>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <%end%>
+      </div><br>
+
+    </div>
+<% end %>
 
 <br>
 
